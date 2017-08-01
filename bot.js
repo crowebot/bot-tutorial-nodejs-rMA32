@@ -12,7 +12,7 @@ function respond() {
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(cool());
-    postMessage("Beep Bop " +request.name+ " Sucks");
+    postMessage(request.name+ " did someone say chicken?");
     this.res.end();
   }
   
