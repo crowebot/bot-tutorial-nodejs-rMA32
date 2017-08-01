@@ -20,6 +20,7 @@ function respond() {
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(cool());
+    postMessage("Beep Bop @Mike Sucks");
     this.res.end();
   }
   else if(request.text && botRegexSlut.test(request.text)) {
