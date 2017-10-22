@@ -9,7 +9,7 @@ var units = '&units=metric';
 var input;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /yeah/gi; botRegexNB= /northbrook/gi;
+      botRegex = /london/gi; botRegexNB= /northbrook/gi;
   var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
                 ,"BAL","SD","DEN","MIN","ATL","KC","NYG","GB","DET","HOU","STL","CHI","CAR",
                 "MIA","BUF","SF","WAS","NYJ","TB"]
@@ -17,23 +17,14 @@ function respond() {
     this.res.writeHead(200);
  //   Start Weather
     
-    var weather;
-
-
-
-
+  
   input = request.text;
 
 
-function weatherAsk() {
   var url = api + input + apiKey + units;
-  loadJSON(url, gotData);
-}
+  var weather = JSON.parse(url);
 
-function gotData(data) {
-  weather = data;
   var temp = weather.main.temp;
-}
     
     // End Weather
     postMessage(cool());
