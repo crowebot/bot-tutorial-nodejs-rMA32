@@ -1,5 +1,6 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
+var weather;
 
 var botID = process.env.BOT_ID;
 var api = 'http://api.openweathermap.org/data/2.5/weather?q=';
@@ -9,29 +10,30 @@ var input ='london';
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /london/gi; botRegexNB= /northbrook/gi;
+      botRegex = /l/gi; botRegexNB= /northbrook/gi;
   var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
                 ,"BAL","SD","DEN","MIN","ATL","KC","NYG","GB","DET","HOU","STL","CHI","CAR",
                 "MIA","BUF","SF","WAS","NYJ","TB"]
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
+     postMessage(request.name+ " did someone say chicken?");
  //   Start Weather
   var url = api + input + apiKey + units;
-  https.get(url, res => {
-  res.setEncoding("utf8");
-  let body = "";
-  res.on("data", data => {
-    body += data;
-  });
-  res.on("end", () => {
-    body = JSON.parse(body);
+    function weatherAsk() {
+  var url = api + input + apiKey + units;
+  loadJSON(url, gotData);
+}
 
-  var temp = body.main.temp;
+function gotData(data) {
+  weather = data;
+}
+
+  var temp = weather.main.temp;
     
     // End Weather
     postMessage(cool());
     postMessage(temp);
-    postMessage(request.name+ " did someone say chicken?");
+   
     this.res.end();
   }
   
