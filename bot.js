@@ -5,8 +5,8 @@ var botID = process.env.BOT_ID;
 var api = 'http://api.openweathermap.org/data/2.5/weather?q=';
 var apiKey = '&APPID=fed9ecac1c3e3875fdd6c89cb5afe97b';
 var units = '&units=metric';
+var input ='london';
 
-var input;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /london/gi; botRegexNB= /northbrook/gi;
@@ -16,15 +16,17 @@ function respond() {
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
  //   Start Weather
-    
-  
-  input = request.text;
-
-
   var url = api + input + apiKey + units;
-  var weather = JSON.parse(url);
+  https.get(url, res => {
+  res.setEncoding("utf8");
+  let body = "";
+  res.on("data", data => {
+    body += data;
+  });
+  res.on("end", () => {
+    body = JSON.parse(body);
 
-  var temp = weather.main.temp;
+  var temp = body.main.temp;
     
     // End Weather
     postMessage(cool());
