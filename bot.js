@@ -11,7 +11,38 @@ function respond() {
                 "MIA","BUF","SF","WAS","NYJ","TB"]
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
+ //   Start Weather
+    var weather;
+
+var api = 'http://api.openweathermap.org/data/2.5/weather?q=';
+var apiKey = '&APPID=fed9ecac1c3e3875fdd6c89cb5afe97b';
+var units = '&units=metric';
+
+var input;
+
+  input = request.text;
+
+
+function weatherAsk() {
+  var url = api + input + apiKey + units;
+  loadJSON(url, gotData);
+}
+
+function gotData(data) {
+  weather = data;
+}
+
+function draw() {
+  background(0);
+  if (weather) {
+    var temp = weather.main.temp;
+    var humidity = weather.main.humidity;
+  }
+}
+    
+    // End Weather
     postMessage(cool());
+    postMessage(temp);
     postMessage(request.name+ " did someone say chicken?");
     this.res.end();
   }
