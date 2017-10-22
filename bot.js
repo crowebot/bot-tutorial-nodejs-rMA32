@@ -12,6 +12,7 @@ function respond() {
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
  //   Start Weather
+    /**
     var weather;
 
 var api = 'http://api.openweathermap.org/data/2.5/weather?q=';
@@ -39,10 +40,10 @@ function draw() {
     var humidity = weather.main.humidity;
   }
 }
-    
+    **/
     // End Weather
     postMessage(cool());
-    postMessage(temp);
+  //  postMessage(temp);
     postMessage(request.name+ " did someone say chicken?");
     this.res.end();
   }
