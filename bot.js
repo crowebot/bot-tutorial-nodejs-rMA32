@@ -2,7 +2,11 @@ var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
+var api = 'http://api.openweathermap.org/data/2.5/weather?q=';
+var apiKey = '&APPID=fed9ecac1c3e3875fdd6c89cb5afe97b';
+var units = '&units=metric';
 
+var input;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /yeah/gi; botRegexNB= /northbrook/gi;
@@ -15,11 +19,8 @@ function respond() {
     
     var weather;
 
-var api = 'http://api.openweathermap.org/data/2.5/weather?q=';
-var apiKey = '&APPID=fed9ecac1c3e3875fdd6c89cb5afe97b';
-var units = '&units=metric';
 
-var input;
+
 
   input = request.text;
 
@@ -31,14 +32,7 @@ function weatherAsk() {
 
 function gotData(data) {
   weather = data;
-}
-
-function draw() {
-  background(0);
-  if (weather) {
-    var temp = weather.main.temp;
-    var humidity = weather.main.humidity;
-  }
+  var temp = weather.main.temp;
 }
     
     // End Weather
