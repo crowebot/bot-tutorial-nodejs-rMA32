@@ -5,11 +5,11 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),//momo user id 9469129
-      botRegex = /a/gi; botRegexNB= /northbrook/gi;
+      botRegex = /7522678/gi; botRegexNB= /northbrook/gi;
   var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
                 ,"BAL","SD","DEN","MIN","ATL","KC","NYG","GB","DET","HOU","STL","CHI","CAR",
                 "MIA","BUF","SF","WAS","NYJ","TB"]
-  if(request.text && botRegex.test(request.text)) {
+  if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
     postMessage(cool());
     postMessage("Good one Momo");
