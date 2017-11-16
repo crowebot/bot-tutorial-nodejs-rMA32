@@ -17,12 +17,12 @@ function respond() {
     postMessage("https://media.giphy.com/media/yisc7FaqoEfjG/giphy.gif");
     this.res.end();
   }
-  else if(request.user_id == '9469129') {
+  else if(request.user_id == '7522682') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
     postMessage(cool());
-    postMessage("Good one Momo");
-    postMessage("https://media.giphy.com/media/yisc7FaqoEfjG/giphy.gif");
+    postMessage("Graduate");
+    postMessage("http://media0.giphy.com/media/6SSvOASBlXHck/giphy.gif");
     this.res.end();
   }
   
