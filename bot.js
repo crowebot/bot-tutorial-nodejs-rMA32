@@ -12,7 +12,8 @@ function respond() {
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(cool());
-    postMessage("Beep Bop " +request.user_id+ " Sucks");
+    postMessage("Good one Momo");
+    postMessage("https://media.giphy.com/media/yisc7FaqoEfjG/giphy.gif");
     this.res.end();
   }
   
