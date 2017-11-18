@@ -13,7 +13,6 @@ function respond() {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
     postMessage("Good one Momo");
-    postMessage("https://media.giphy.com/media/yisc7FaqoEfjG/giphy.gif");
     this.res.end();
   }
   else if(request.user_id == '7522682') {
