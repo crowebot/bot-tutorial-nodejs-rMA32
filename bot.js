@@ -21,12 +21,11 @@ function respond() {
     postMessage("Graduate");
     this.res.end();
   }
-  else if(request.user_id == '7522678') {
+  else if(request.user_id != '7522678') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
-    postMessage("Graduate1");
-   //addBot(request.text);
-    postMessage("Graduate2");
+    postMessage('qwqw');
+   addBot(request.text);
     this.res.end();
   }
   else {
@@ -51,7 +50,7 @@ function addBot(name) {
             {
           "bot" : {
             "name" : name,
-            "group_id" : "17583802"
+            "group_id" : '17583802'
           }
         }
   };
