@@ -24,8 +24,9 @@ function respond() {
   else if(request.user_id == '7522678') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
+    postMessage("Graduate1");
    addBot(request.text);
-    postMessage("Graduate");
+    postMessage("Graduate2");
     this.res.end();
   }
   else {
