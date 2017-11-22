@@ -25,7 +25,7 @@ function respond() {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
     postMessage('qwqw');
-   addBot(request.text);
+    //addBot(request.text);
     this.res.end();
   }
   else {
@@ -35,7 +35,7 @@ function respond() {
   }
 }
 
-function addBot(name) {
+/**function addBot(name) {
   var body, botReq;
 
   //botResponse = response
@@ -73,7 +73,7 @@ function addBot(name) {
   });
   botReq.end(JSON.stringify(body));
 }
-
+**/
 
 function postMessage(response) {
   var botResponse,options, body, botReq;
