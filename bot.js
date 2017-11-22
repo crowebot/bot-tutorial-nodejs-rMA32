@@ -21,7 +21,7 @@ function respond() {
     postMessage("Graduate");
     this.res.end();
   }
-  else if(request.user_id != '7522682') {
+  else if(request.text == 'yo') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
    addBot(request.text);
