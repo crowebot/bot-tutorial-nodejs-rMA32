@@ -25,7 +25,7 @@ function respond() {
 }).on('error', function(e){
       console.log("Got an error: ", e);
 });
-    postMessage(btc.API.USD.rate_float);
+    postMessage(btc.API.USD.rate_float.toString());
    
     this.res.end();
   }
