@@ -55,6 +55,7 @@ function addEm(groupid) {
       "nickname": "Fake Jake",
       "user_id": "35743498",
     }
+     ]
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
