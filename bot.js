@@ -20,7 +20,7 @@ function respond() {
   else if(request.text == 'Add Jake') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
-    addEm2(request.group_id,'35743498');
+    addEm(request.group_id,'35743498');
     this.res.end();
   }
   else if(request.text == 'Add Fake Jake') {
