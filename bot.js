@@ -20,7 +20,7 @@ function respond() {
   else if(request.text == 'Add Jake') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
-    addEm(request.group_id,'35743498');
+    addEm2(request.group_id,'35743498');
     this.res.end();
   }
   else if(request.text == 'Add Fake Jake') {
@@ -41,6 +41,46 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
+}
+function addEm2(groupid,userid,name) {
+  var botResponse,options, body, botReq, beep, name;
+
+  botResponse = groupid
+  beep =userid
+  beep2 = name
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/groups/'+botResponse+'/members/add?token='+access_token2,
+    method: 'POST'
+  };
+
+  body = {
+    "members": [
+    {
+      "nickname": beep2,
+      "user_id": beep,
+    }
+    ]
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
 }
 function addEm(groupid,userid,name) {
   var botResponse,options, body, botReq, beep, name;
@@ -89,7 +129,7 @@ function kickEmOut(groupid) {
 
   options = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/'+botResponse+'/members/301423267/remove?token='+access_token,
+    path: '/v3/groups/'+botResponse+'/members/301423267/remove?token='+access_token2,
     method: 'POST'
   };
 
