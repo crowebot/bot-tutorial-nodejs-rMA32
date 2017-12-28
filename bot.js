@@ -2,6 +2,7 @@ var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
+var memID ='301523939';
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),//momo user id 9469129
@@ -18,8 +19,8 @@ function respond() {
   else if(request.text == '7') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
-    postMessage2("Graduate");
     postMessage("Graduate");
+    kickEmOut("Graduate");
     this.res.end();
   }
   
@@ -29,20 +30,19 @@ function respond() {
     this.res.end();
   }
 }
-function postMessage2(response) {
+function kickEmOut(response) {
   var botResponse,options, body, botReq;
 
   botResponse = response
 
   options = {
     hostname: 'api.groupme.com',
-    path: '/v3/bots/post',
+    path: '/v3/groups/32603770/members/'+memID+'/remove',
     method: 'POST'
   };
 
   body = {
-    "bot_id" : botID,
-    "text" : botResponse
+    "membership_id" : memID
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
