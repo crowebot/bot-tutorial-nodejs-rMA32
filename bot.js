@@ -89,7 +89,7 @@ function kickEmOut(groupid) {
 
   options = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/'+botResponse+'/members/301523939/remove?token='+access_token,
+    path: '/v3/groups/'+botResponse+'/members/301423267/remove?token='+access_token,
     method: 'POST'
   };
 
