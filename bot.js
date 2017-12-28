@@ -3,6 +3,7 @@ var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
 var access_token =process.env.acc_ID;
+var access_token2 =process.env.acc2_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),//momo user id 9469129
@@ -20,7 +21,7 @@ function respond() {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
     postMessage("Graduate");
-    kickEmOut("Graduate");
+    kickEmOut(request.group_id);
     this.res.end();
   }
   
@@ -30,14 +31,14 @@ function respond() {
     this.res.end();
   }
 }
-function kickEmOut(response) {
+function kickEmOut(groupid) {
   var botResponse,options, body, botReq;
 
-  botResponse = response
+  botResponse = groupid
 
   options = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/32603770/members/301523939/remove?token='+access_token,
+    path: '/v3/groups/'+botResponse+'/members/301523939/remove?token='+access_token,
     method: 'POST'
   };
 
@@ -98,9 +99,9 @@ function postMessage(response) {
   botReq.end(JSON.stringify(body));
 }
 
+
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-
 
 exports.respond = respond;
