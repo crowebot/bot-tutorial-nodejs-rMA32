@@ -17,17 +17,21 @@ function respond() {
     postMessage("Good one Momo");
     this.res.end();
   }
-  else if(request.text == '7') {
+  else if(request.text == 'Add Jake') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
-    postMessage("Graduate");
-    addEm(request.group_id);
+    addEm(request.group_id,'35743498');
     this.res.end();
   }
-    else if(request.text == '6') {
+  else if(request.text == 'Add Fake Jake') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
-    postMessage("Graduate");
+    addEm(request.group_id,'20881812');
+    this.res.end();
+  }
+    else if(request.text == 'Kill Fake Jake') {
+   // if(request.user_id && botRegex.test(request.user_id)) {
+    this.res.writeHead(200);
     kickEmOut(request.group_id);
     this.res.end();
   }
@@ -38,10 +42,12 @@ function respond() {
     this.res.end();
   }
 }
-function addEm(groupid) {
-  var botResponse,options, body, botReq;
+function addEm(groupid,userid,name) {
+  var botResponse,options, body, botReq, beep, name;
 
   botResponse = groupid
+  beep =userid
+  beep2 = name
 
   options = {
     hostname: 'api.groupme.com',
@@ -52,10 +58,10 @@ function addEm(groupid) {
   body = {
     "members": [
     {
-      "nickname": "Fake Jake",
-      "user_id": "35743498",
+      "nickname": beep2,
+      "user_id": beep,
     }
-     ]
+    ]
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
@@ -88,7 +94,7 @@ function kickEmOut(groupid) {
   };
 
   body = {
-    "membership_id" : '301523939'
+    "membership_id" : '301423267'
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
