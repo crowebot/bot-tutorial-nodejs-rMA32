@@ -2,7 +2,7 @@ var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
-var memID ='301523939';
+var access_token =process.env.acc_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),//momo user id 9469129
@@ -37,7 +37,7 @@ function kickEmOut(response) {
 
   options = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/32603770/members/301523939/remove',
+    path: '/v3/groups/32603770/members/301523939/remove?token='+access_token,
     method: 'POST'
   };
 
