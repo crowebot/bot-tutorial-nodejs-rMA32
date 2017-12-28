@@ -21,6 +21,13 @@ function respond() {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
     postMessage("Graduate");
+    addEm(request.group_id);
+    this.res.end();
+  }
+    else if(request.text == '6') {
+   // if(request.user_id && botRegex.test(request.user_id)) {
+    this.res.writeHead(200);
+    postMessage("Graduate");
     kickEmOut(request.group_id);
     this.res.end();
   }
@@ -30,6 +37,43 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
+}
+function addEm(groupid) {
+  var botResponse,options, body, botReq;
+
+  botResponse = groupid
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/groups/'+botResponse+'/members/add?token='+access_token,
+    method: 'POST'
+  };
+
+  body = {
+    "members": [
+    {
+      "nickname": "Fake Jake",
+      "user_id": "35743498",
+    }
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
 }
 function kickEmOut(groupid) {
   var botResponse,options, body, botReq;
