@@ -37,12 +37,12 @@ function kickEmOut(response) {
 
   options = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/32603770/members/'+memID+'/remove',
+    path: '/v3/groups/32603770/members/301523939/remove',
     method: 'POST'
   };
 
   body = {
-    "membership_id" : memID
+    "membership_id" : '301523939'
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
