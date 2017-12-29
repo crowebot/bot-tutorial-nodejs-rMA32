@@ -3,7 +3,7 @@ var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
 
-const coindesk = require('node-coindesk-api');
+//const coindesk = require('node-coindesk-api');
 
 
 function respond() {
