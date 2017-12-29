@@ -2,6 +2,35 @@ var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
+function getJSON(options, cb) {
+
+  HTTPS.request(options, function(res){
+    var body = '';
+
+    res.on('data', function(chunk){
+
+      body+= chunk;
+    });
+
+    res.on('end', function(){
+      var result = JSON.parse(body);
+      cb(null, result);
+    });
+
+    res.on('error',cb);
+  })
+  .on('error',cb)
+  .end();
+}
+ 
+
+var btcoptions = {
+    hostname: 'https://api.coindesk.com/v1',
+    path: '/bpi/currentprice.json',
+    method: 'GET'
+};
+
+
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -13,6 +42,14 @@ function respond() {
     this.res.writeHead(200);
     
     postMessage("Posting");
+    getJSON(btcoptions, function(err, result){
+  if(err){
+    return console.log('Error while trying to get ', err);
+  }
+  console.log(result);
+  var btcprice=result
+})
+    postMessage(btcprice);
    
     this.res.end();
   }
