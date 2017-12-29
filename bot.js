@@ -5,11 +5,7 @@ var botID = process.env.BOT_ID;
 
  
 
-var btcoptions = {
-    hostname: 'https://api.coindesk.com/v1',
-    path: '/bpi/currentprice.json',
-    method: 'GET'
-};
+
 
 
 
@@ -23,6 +19,11 @@ function respond() {
     this.res.writeHead(200);
     
     postMessage("Posting");
+    var btcoptions = {
+    hostname: 'https://api.coindesk.com/v1',
+    path: '/bpi/currentprice/USD.json',
+    method: 'GET'
+};
     getJSON(btcoptions, function(err, result){
   if(err){
     return console.log('Error while trying to get ', err);
