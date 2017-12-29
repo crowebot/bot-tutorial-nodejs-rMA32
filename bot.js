@@ -11,21 +11,8 @@ function respond() {
                 "MIA","BUF","SF","WAS","NYJ","TB"]
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    http.get('https://api.coindesk.com/v1/bpi/currentprice.json', function(res){
-    var body = '';
-
-    res.on('data', function(chunk){
-        body += chunk;
-    });
-
-    res.on('end', function(){
-        var btcAPI = JSON.parse(body);
-        console.log("Got a response: ", btcAPI.bpi);
-    });
-}).on('error', function(e){
-      console.log("Got an error: ", e);
-});
-    postMessage(btc.API.USD.rate_float.toString());
+    
+    postMessage("Posting");
    
     this.res.end();
   }
