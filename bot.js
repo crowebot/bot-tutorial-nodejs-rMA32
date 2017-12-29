@@ -19,19 +19,6 @@ function respond() {
     this.res.writeHead(200);
     
     postMessage("Posting");
-    var btcoptions = {
-    hostname: 'https://api.coindesk.com/v1',
-    path: '/bpi/currentprice/USD.json',
-    method: 'GET'
-};
-    getJSON(btcoptions, function(err, result){
-  if(err){
-    return console.log('Error while trying to get ', err);
-  }
-  console.log(result);
-  var btcprice=result.bpi.USD.rate;
-})
-    postMessage(btcprice);
    
     this.res.end();
   }
@@ -80,26 +67,6 @@ function postMessage(response) {
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
-}
-function getJSON(options, cb) {
-
-  HTTPS.request(options, function(res){
-    var body = '';
-
-    res.on('data', function(chunk){
-
-      body+= chunk;
-    });
-
-    res.on('end', function(){
-      var result = JSON.parse(body);
-      cb(null, result);
-    });
-
-    res.on('error',cb);
-  })
-  .on('error',cb)
-  .end();
 }
 
 
