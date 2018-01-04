@@ -23,6 +23,12 @@ function respond() {
     addEm(request.group_id,'35743498');
     this.res.end();
   }
+    else if(request.text == 'Travis') {
+   // if(request.user_id && botRegex.test(request.user_id)) {
+    this.res.writeHead(200);
+    postMessage('https://www.gofundme.com/send-travis-back-to-school');
+    this.res.end();
+  }
   else if(request.text == 'Add Fake Jake') {
    // if(request.user_id && botRegex.test(request.user_id)) {
     this.res.writeHead(200);
@@ -54,7 +60,7 @@ function addEm2(groupid,userid,name) {
     path: '/v3/groups/'+botResponse+'/members/add?token='+access_token2,
     method: 'POST'
   };
-
+//https://www.gofundme.com/send-travis-back-to-school
   body = {
     "members": [
     {
