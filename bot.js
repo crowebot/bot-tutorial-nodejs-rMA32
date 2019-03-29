@@ -24,6 +24,12 @@ function respond() {
     postMessage("Graduate");
     this.res.end();
   }
+  else if(request.text == 'Sick') {
+   // if(request.user_id && botRegex.test(request.user_id)) {
+    this.res.writeHead(200);
+    postMessage("https://i.groupme.com/337x600.gif.751c33582cca4008a9681de7627ec2a2.large");
+    this.res.end();
+  }
   
   else {
     console.log("don't care");
